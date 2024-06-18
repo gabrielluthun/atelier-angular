@@ -1,20 +1,20 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, NgModule } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { CounterService } from "./counter.service";
-import { DecrementButtonComponent } from "./decrement-button/decrement-button.component";
-import { IncrementButtonComponent } from "./increment-button/increment-button.component";
+import { NotStandaloneComponent } from "./not-standalone/not-standalone.component";
 
+@NgModule({
+  declarations: [NotStandaloneComponent],
+  exports: [NotStandaloneComponent]
+})
+export class SharedModule {}
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, DecrementButtonComponent, IncrementButtonComponent],
+  imports: [RouterOutlet, SharedModule],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-
-
 export class AppComponent {
-  constructor(public CounterService: CounterService) {}
   title = "atelier-angular";  
 }
